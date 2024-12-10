@@ -2,30 +2,24 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class LoginPage {
-    public static WebDriver driver;
+    private WebDriver driver;
 
+    // Locators
+    private By usernameField = By.id("user-name");
+    private By passwordField = By.id("password");
+    private By loginButton = By.id("login-button");
+
+    // Constructor
     public LoginPage(WebDriver driver) {
-        this.driver=driver;
+        this.driver = driver;
     }
 
-    public static WebElement getUsernameField() {
-        return driver.findElement(By.id("user-name"));
-    }
-
-    public static WebElement getPasswordField() {
-        return driver.findElement(By.id("password"));
-    }
-
-    public static WebElement getLoginButton() {
-        return driver.findElement(By.id("login-button"));
-    }
-
-    public static void login(String username, String password) {
-        getUsernameField().sendKeys(username);
-        getPasswordField().sendKeys(password);
-        getLoginButton().click();
+    // Login method
+    public void login(String username, String password) {
+        driver.findElement(usernameField).sendKeys(username);
+        driver.findElement(passwordField).sendKeys(password);
+        driver.findElement(loginButton).click();
     }
 }
