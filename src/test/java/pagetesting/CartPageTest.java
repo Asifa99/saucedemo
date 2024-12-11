@@ -79,12 +79,6 @@ public class CartPageTest {
         System.out.println("Add to cart Button is visible again for second product item");
 
 
-
-
-
-
-
-
     }
 
 //    @AfterAll

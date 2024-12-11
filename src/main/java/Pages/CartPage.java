@@ -13,6 +13,8 @@ public class CartPage {
     private By cartItem1;
     private By cartItem2;
     private By cartItem3;
+    private By cartItem4;
+    private By cartItem5;
     private By removecartItem1;
     private By removecartItem2;
 
@@ -27,6 +29,8 @@ public class CartPage {
         this.cartItem1 = By.xpath(props.getProperty("cart.item1"));
         this.cartItem2 = By.xpath(props.getProperty("cart.item2"));
         this.cartItem3 = By.xpath(props.getProperty("cart.item3"));
+        this.cartItem4 = By.xpath(props.getProperty("cart.item4"));
+        this.cartItem5 = By.xpath(props.getProperty("cart.item5"));
         this.removecartItem1 = By.xpath(props.getProperty("remove.cart.item1"));
         this.removecartItem2 = By.xpath(props.getProperty("remove.cart.item2"));
 
@@ -43,6 +47,12 @@ public class CartPage {
 
     public By getCartItem3() {
         return cartItem3;
+    }
+    public By getCartItem4() {
+        return cartItem4;
+    }
+    public By getCartItem5() {
+        return cartItem5;
     }
     public By getRemovecartItem1() {
         return removecartItem1;
