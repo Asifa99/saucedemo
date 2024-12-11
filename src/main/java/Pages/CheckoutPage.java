@@ -21,6 +21,7 @@ public class CheckoutPage {
     private By lastNameField;
     private By postalCodeField;
     private By continueButton;
+    private By cancelButton;
 
 
     // Constructor
@@ -35,6 +36,7 @@ public class CheckoutPage {
         this.lastNameField = By.xpath(props.getProperty("last.Name.Field"));
         this.postalCodeField = By.xpath(props.getProperty("postal.Code.Field"));
         this.continueButton = By.xpath(props.getProperty("continue.Button"));
+        this.cancelButton = By.xpath(props.getProperty("cancel.Button"));
     }
 
     public void proceedToCheckout() {
@@ -48,6 +50,9 @@ public class CheckoutPage {
         driver.findElement(lastNameField).sendKeys(lastName);
         driver.findElement(postalCodeField).sendKeys(postalCode);
         driver.findElement(continueButton).click();
+    }
+    public By getcancelBtn() {
+        return cancelButton;
     }
 }
 

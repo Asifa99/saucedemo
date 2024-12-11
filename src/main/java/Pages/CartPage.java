@@ -60,4 +60,5 @@ public class CartPage {
     public By getRemovecartItem2() {
         return removecartItem2;
     }
+
 }

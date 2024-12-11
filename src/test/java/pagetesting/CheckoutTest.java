@@ -69,5 +69,8 @@ public class CheckoutTest {
 
         // Complete checkout process
         checkoutPage.completeCheckout("asifa", "iqbal", "12345");
+
+        WebElement cancelBtn = waits.waitForElementToBeClickable(driver, checkoutPage.getcancelBtn(), 6);
+        cancelBtn.click();
     }
 }
