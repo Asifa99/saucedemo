@@ -63,6 +63,28 @@ public class CartPageTest {
 
         WebElement item3 = waits.waitForElementToBeClickable(driver, cartPage.getCartItem3(), 7);
         item3.click();
+
+        WebElement removeitem1 = waits.waitForElementToBeClickable(driver, cartPage.getRemovecartItem1(), 6);
+        removeitem1.click();
+        System.out.println("Removed first added product from cart");
+
+        WebElement removeitem2 = waits.waitForElementToBeClickable(driver, cartPage.getRemovecartItem2(), 6);
+        removeitem2.click();
+        System.out.println("Removed first added product from cart");
+
+        waits.waitForElementToBeVisible(driver, cartPage.getCartItem1(), 6);
+        System.out.println("Add to cart Button is visible again for first product item");
+
+        waits.waitForElementToBeVisible(driver, cartPage.getCartItem2(), 6);
+        System.out.println("Add to cart Button is visible again for second product item");
+
+
+
+
+
+
+
+
     }
 
 //    @AfterAll
