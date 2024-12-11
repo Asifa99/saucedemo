@@ -1,6 +1,7 @@
 package pagetesting;
 
 import Pages.LoginPage;
+import base.ConfigLoader;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -8,31 +9,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.By;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginTest {
 
     private static WebDriver driver;
     private static LoginPage loginPage;
-    private static Properties props;
 
     @BeforeAll
-    public static void setUp() throws IOException {
-        // Load properties file
-        props = new Properties();
-        try (FileInputStream input = new FileInputStream("src/main/resources/config.properties")) {
-            props.load(input);
-        }
+    public static void setUp() throws Exception {
+        // Load the properties file
+        ConfigLoader.fileLoader();
 
-        // Initialize WebDriver
+        // Use Selenium Manager to set up the WebDriver
         driver = new ChromeDriver();
 
         // Navigate to the URL
-        driver.get(props.getProperty("url"));
+        String url = ConfigLoader.getProperty("user.name");
+        driver.get(url);
 
         // Initialize LoginPage
         loginPage = new LoginPage(driver);
@@ -40,9 +34,9 @@ public class LoginTest {
 
     @Test
     public void testLogin() {
-        // Get credentials from the properties file
-        String username = props.getProperty("user.name");
-        String password = props.getProperty("password");
+        // Retrieve credentials from ConfigLoader
+        String username = ConfigLoader.getProperty("user.name");
+        String password = ConfigLoader.getProperty("user.name");
 
         // Perform login
         loginPage.login(username, password);
@@ -54,7 +48,7 @@ public class LoginTest {
 
     @AfterAll
     public static void tearDown() {
-        // Close browser
+        // Close the browser
         if (driver != null) {
             driver.quit();
         }
