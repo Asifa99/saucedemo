@@ -7,11 +7,6 @@ import java.util.Properties;
 
 public class CheckoutPage {
     private WebDriver driver;
-
-    public CheckoutPage(WebDriver driver) {
-        this.driver = driver;
-    }
-
     private Properties props;
 
     // Locators
