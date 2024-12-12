@@ -10,7 +10,8 @@ public class TestSuite {
 //        new CheckoutItemsTest().init_test();
 //        new ProductDetailsPageTest().init_test();
 //        new PurchaseItemsTest().init_test();
-        new PersistenceTest().init_test();
+//        new PersistenceTest().init_test();
+        new SortingTest().init_test();
 
     }
 }
