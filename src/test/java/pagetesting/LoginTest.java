@@ -1,6 +1,7 @@
 package pagetesting;
 
 import Pages.LoginPage;
+import org.openqa.selenium.bidi.log.Log;
 import utils.ConfigLoader;
 import utils.WebDriverLoader;
 import org.junit.jupiter.api.AfterAll;
@@ -13,38 +14,22 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginTest {
     private static LoginPage loginPage;
+    private static WebDriver driver = WebDriverLoader.getDriver();
 
     @BeforeAll
     public static void setUp() throws Exception {
-        ConfigLoader.fileLoader();
-
-        WebDriver driver = WebDriverLoader.getDriver();
-
-        // Navigate to the URL
-        String url = ConfigLoader.getProperty("user.name");
-        driver.get(url);
-
-        // Initialize LoginPage
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage();
     }
 
     @Test
     public void testLogin() {
-        // Retrieve credentials from ConfigLoader
-        String username = ConfigLoader.getProperty("user.name");
-        String password = ConfigLoader.getProperty("user.name");
-
-        // Perform login
-        loginPage.login(username, password);
-
-        // Verify successful login
+        loginPage.login(driver);
         assertTrue(driver.findElement(By.className("inventory_list")).isDisplayed(),
                 "Login failed, inventory page not displayed.");
     }
 
     @AfterAll
     public static void tearDown() {
-        // Close the browser
         if (driver != null) {
             driver.quit();
         }

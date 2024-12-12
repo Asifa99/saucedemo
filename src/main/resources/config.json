@@ -1,9 +1,7 @@
 {
-  "url": "https://www.saucedemo.com",
-  "user": {
-    "name": "standard_user",
-    "password": "secret_sauce"
-  },
+  "login_url": "https://www.saucedemo.com",
+  "username": "standard_user",
+  "password": "secret_sauce",
   "cart": {
     "item1": "//*[@id='add-to-cart-sauce-labs-backpack']",
     "item2": "//*[@id='add-to-cart-sauce-labs-bike-light']",
