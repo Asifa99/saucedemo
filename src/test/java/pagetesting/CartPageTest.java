@@ -1,16 +1,14 @@
 package pagetesting;
 
 import Pages.CartPage;
-import Pages.LoginPage;
-import org.openqa.selenium.WebElement;
-import utils.WebDriverLoader;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import utils.WebDriverLoader;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CartPageTest {
     private static CartPage cartPage = new CartPage();
@@ -18,7 +16,7 @@ public class CartPageTest {
 
 
     @Test
-    public void test_cart_page() {
+    public void init_test() {
         cartPage.add_items(driver);
         cartPage.remove_items(driver);
 
