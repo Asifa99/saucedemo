@@ -2,9 +2,8 @@ package pagetesting;
 
 import Pages.CartPage;
 import Pages.LoginPage;
-import base.ConfigLoader;
-import base.waits;
-import org.junit.jupiter.api.AfterAll;
+import utils.ConfigLoader;
+import utils.waits;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -64,6 +63,7 @@ public class CartPageTest {
         WebElement item3 = waits.waitForElementToBeClickable(driver, cartPage.getCartItem3(), 7);
         item3.click();
 
+        //Remove items from cart
         WebElement removeitem1 = waits.waitForElementToBeClickable(driver, cartPage.getRemovecartItem1(), 6);
         removeitem1.click();
         System.out.println("Removed first added product from cart");

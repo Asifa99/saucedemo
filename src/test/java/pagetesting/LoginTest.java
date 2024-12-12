@@ -1,28 +1,24 @@
 package pagetesting;
 
 import Pages.LoginPage;
-import base.ConfigLoader;
+import utils.ConfigLoader;
+import utils.WebDriverLoader;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginTest {
-
-    private static WebDriver driver;
     private static LoginPage loginPage;
 
     @BeforeAll
     public static void setUp() throws Exception {
-        // Load the properties file
         ConfigLoader.fileLoader();
 
-        // Use Selenium Manager to set up the WebDriver
-        driver = new ChromeDriver();
+        WebDriver driver = WebDriverLoader.getDriver();
 
         // Navigate to the URL
         String url = ConfigLoader.getProperty("user.name");

@@ -3,9 +3,8 @@ package pagetesting;
 import Pages.CartPage;
 import Pages.CheckoutPage;
 import Pages.LoginPage;
-import base.ConfigLoader;
-import base.waits;
-import org.junit.jupiter.api.Assertions;
+import utils.ConfigLoader;
+import utils.waits;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -14,8 +13,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.IOException;
 import java.util.Properties;
-
-import static org.junit.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class CheckoutTest {
@@ -82,7 +79,6 @@ public class CheckoutTest {
 
         WebElement confirmation = waits.waitForElementToBeVisible(driver, checkoutPage.getConfirmationMessage(), 6);
         String confirmationText = confirmation.getText();
-        String expectedText = "Thank you for your order"; // Update based on actual text
 
         //Assertions
 
