@@ -1,7 +1,12 @@
 {
   "login_url": "https://www.saucedemo.com",
+  "inventory_url": "https://www.saucedemo.com/inventory.html",
+  "checkout_confirmed_url": "https://www.saucedemo.com/checkout-complete.html",
   "username": "standard_user",
   "password": "secret_sauce",
+  "first_name": "Asifa",
+  "last_name": "Iqbal",
+  "postal_code": "44000",
   "cart": {
     "item1": "//*[@id='add-to-cart-sauce-labs-backpack']",
     "item2": "//*[@id='add-to-cart-sauce-labs-bike-light']",

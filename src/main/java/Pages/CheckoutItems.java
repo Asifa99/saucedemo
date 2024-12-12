@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utils.ConfigLoader;
-import utils.Waits;
 
 import java.util.List;
 import java.util.Map;
@@ -16,10 +15,6 @@ public class CheckoutItems {
 
     // Constructor
     public CheckoutItems() {
-    }
-
-    public void open_cart(WebDriver driver) {
-        Waits.getElementWhenVisible(driver, By.className("shopping_cart_link")).click();
     }
 
     public void remove_items_from_cart(WebDriver driver) {

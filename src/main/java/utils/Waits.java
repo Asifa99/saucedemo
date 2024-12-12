@@ -10,7 +10,8 @@ import java.time.Duration;
 
 public class Waits {
     public static long timeout = 10;
-    public static WebElement getElementWhenVisible(WebDriver driver, By locator){
+
+    public static WebElement getElementWhenVisible(WebDriver driver, By locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.elementToBeClickable(locator));
         return driver.findElement(locator);
@@ -39,8 +40,8 @@ public class Waits {
     }
 
     // Wait for the page to load completely (checking document.readyState)
-    public static void waitForPageToLoad(WebDriver driver, long timeoutInSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+    public static void waitForPageToLoad(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         wait.until(webDriver -> ((org.openqa.selenium.JavascriptExecutor) webDriver)
                 .executeScript("return document.readyState").equals("complete"));
     }
