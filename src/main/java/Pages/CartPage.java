@@ -2,63 +2,41 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Wait;
+import utils.ConfigLoader;
+import utils.Waits;
+
+import java.util.Map;
 import java.util.Properties;
 
 public class CartPage {
+    private String id_cart_item_1 = "add-to-cart-sauce-labs-backpack";
+    private String id_cart_item_2 = "add-to-cart-sauce-labs-bike-light";
+    private String id_cart_item_3 = "add-to-cart-sauce-labs-bolt-t-shirt";
 
-    private WebDriver driver;
-    private Properties props;
+    private String id_remove_cart_item_1 = "remove-sauce-labs-backpack";
+    private String id_remove_cart_item_2 = "remove-sauce-labs-bike-light";
 
-    // Locators
-    private By cartItem1;
-    private By cartItem2;
-    private By cartItem3;
-    private By cartItem4;
-    private By cartItem5;
-    private By removecartItem1;
-    private By removecartItem2;
-
-
+    Map<String, Object> config = ConfigLoader.getConfig();
 
     // Constructor
-    public CartPage(WebDriver driver, Properties props) {
-        this.driver = driver;
-        this.props = props;
-
-        // Initialize locators with values from the config.properties file
-        this.cartItem1 = By.xpath(props.getProperty("cart.item1"));
-        this.cartItem2 = By.xpath(props.getProperty("cart.item2"));
-        this.cartItem3 = By.xpath(props.getProperty("cart.item3"));
-        this.cartItem4 = By.xpath(props.getProperty("cart.item4"));
-        this.cartItem5 = By.xpath(props.getProperty("cart.item5"));
-        this.removecartItem1 = By.xpath(props.getProperty("remove.cart.item1"));
-        this.removecartItem2 = By.xpath(props.getProperty("remove.cart.item2"));
-
+    public CartPage() {
     }
 
-    // Getter methods for cart items
-    public By getCartItem1() {
-        return cartItem1;
+    public void add_items(WebDriver driver){
+        WebElement item_1 = Waits.getElementWhenVisible(driver, By.id(id_cart_item_1));
+        item_1.click();
+        WebElement item_2 = Waits.getElementWhenVisible(driver, By.id(id_cart_item_2));
+        item_2.click();
+        WebElement item_3 = Waits.getElementWhenVisible(driver, By.id(id_cart_item_3));
+        item_3.click();
     }
 
-    public By getCartItem2() {
-        return cartItem2;
+    public void remove_items(WebDriver driver){
+        WebElement item_1 = Waits.getElementWhenVisible(driver, By.id(id_remove_cart_item_1));
+        item_1.click();
+        WebElement item_2 = Waits.getElementWhenVisible(driver, By.id(id_remove_cart_item_2));
+        item_2.click();
     }
-
-    public By getCartItem3() {
-        return cartItem3;
-    }
-    public By getCartItem4() {
-        return cartItem4;
-    }
-    public By getCartItem5() {
-        return cartItem5;
-    }
-    public By getRemovecartItem1() {
-        return removecartItem1;
-    }
-    public By getRemovecartItem2() {
-        return removecartItem2;
-    }
-
 }

@@ -8,7 +8,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class waits {
+public class Waits {
+    public static long timeout = 10;
+    public static WebElement getElementWhenVisible(WebDriver driver, By locator){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+        return driver.findElement(locator);
+    }
 
     // Wait until the element is clickable, either by By locator or XPath as String
     public static WebElement waitForElementToBeClickable(WebDriver driver, By locator, long timeoutInSeconds) {

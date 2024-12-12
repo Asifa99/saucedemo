@@ -12,12 +12,13 @@ public class LoginPage {
     private String password_id = "password";
     private String login_btn_id = "login-button";
 
+    Map<String, Object> config = ConfigLoader.getConfig();
+
     public LoginPage() {
     }
 
 
     public void login(WebDriver driver) {
-        Map<String, Object> config = ConfigLoader.getConfig();
         driver.get((String) config.get("login_url"));
         driver.findElement(By.id(username_id)).sendKeys((String) config.get("username"));
         driver.findElement(By.id(password_id)).sendKeys((String) config.get("password"));
