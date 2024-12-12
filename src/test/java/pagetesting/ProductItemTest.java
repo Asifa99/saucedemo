@@ -1,7 +1,6 @@
 package pagetesting;
 
 import Pages.CartPage;
-import Pages.CheckoutPage;
 import Pages.LoginPage;
 import Pages.ProductsPage;
 import base.ConfigLoader;
@@ -9,7 +8,6 @@ import base.waits;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.IOException;

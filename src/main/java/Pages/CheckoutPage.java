@@ -17,6 +17,8 @@ public class CheckoutPage {
     private By postalCodeField;
     private By continueButton;
     private By cancelButton;
+    private By finishButton;
+    private By confirmationMessage;
 
 
     // Constructor
@@ -32,6 +34,9 @@ public class CheckoutPage {
         this.postalCodeField = By.xpath(props.getProperty("postal.Code.Field"));
         this.continueButton = By.xpath(props.getProperty("continue.Button"));
         this.cancelButton = By.xpath(props.getProperty("cancel.Button"));
+        this.finishButton = By.xpath(props.getProperty("finish.Button"));
+        this.confirmationMessage = By.xpath(props.getProperty("confirmation.Message"));
+
     }
 
     public void proceedToCheckout() {
@@ -48,6 +53,12 @@ public class CheckoutPage {
     }
     public By getcancelBtn() {
         return cancelButton;
+    }
+    public By getfinishBtn() {
+        return finishButton;
+    }
+    public By getConfirmationMessage() {
+        return confirmationMessage;
     }
 }
 
