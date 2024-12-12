@@ -12,12 +12,9 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Commons {
-    private String id_cart_item_1 = "add-to-cart-sauce-labs-backpack";
-    private String id_cart_item_2 = "add-to-cart-sauce-labs-bike-light";
-    private String id_cart_item_3 = "add-to-cart-sauce-labs-bolt-t-shirt";
-
-    private String id_remove_cart_item_1 = "remove-sauce-labs-backpack";
-    private String id_remove_cart_item_2 = "remove-sauce-labs-bike-light";
+    private String shopping_cart_class = "shopping_cart_badge";
+    private String side_bar_icon_id = "react-burger-menu-btn";
+    private String logout_link_id = "logout_sidebar_link";
 
     Map<String, Object> config = ConfigLoader.getConfig();
     private static WebDriver driver = WebDriverLoader.getDriver();
@@ -36,6 +33,13 @@ public class Commons {
         Waits.getElementWhenVisible(driver, By.className("shopping_cart_link")).click();
     }
 
+    public String get_cart_num() {
+        try {
+            return driver.findElement(By.className(shopping_cart_class)).getText();
+        } catch (Exception e) {
+            return "";
+        }
+    }
 
     public void add_items_to_cart(Integer items_num) {
         int counter = 0;
@@ -67,6 +71,14 @@ public class Commons {
                 break;
             }
         }
+    }
+
+    public void logout() {
+        WebElement sidebar_element = Waits.getElementWhenVisible(driver, By.id(side_bar_icon_id));
+        sidebar_element.click();
+
+        WebElement logout_btn = Waits.getElementWhenVisible(driver, By.id(logout_link_id));
+        logout_btn.click();
     }
 
 }

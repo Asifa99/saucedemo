@@ -11,20 +11,12 @@ public class ProductDetailsPage {
     private String product_links_class = "inventory_item_name";
     private String add_to_cart_btn_id = "add-to-cart";
     private String remove_from_cart_btn_id = "remove";
-    private String shopping_cart_class = "shopping_cart_badge";
 
 
     // Constructor
     public ProductDetailsPage() {
     }
 
-    public String get_cart_num(WebDriver driver) {
-        try {
-            return driver.findElement(By.className(shopping_cart_class)).getText();
-        } catch (Exception e) {
-            return "";
-        }
-    }
 
     public void open_first_product_details(WebDriver driver) {
         List<WebElement> product_links = driver.findElements(By.className(product_links_class));

@@ -1,28 +1,36 @@
 package pagetesting;
 
 import Pages.Commons;
-import Pages.ProductDetailsPage;
+import Pages.LoginPage;
+import Pages.PurchaseItemsPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+import utils.ConfigLoader;
 import utils.WebDriverLoader;
+
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ProductDetailsPageTest {
-    private static ProductDetailsPage productDetailsPage = new ProductDetailsPage();
+public class PersistenceTest {
+    private static LoginPage loginPage = new LoginPage();
+    private static PurchaseItemsPage purchaseItemsPage = new PurchaseItemsPage();
     private static Commons commons = new Commons();
     private static WebDriver driver = WebDriverLoader.getDriver();
+    Map<String, Object> config = ConfigLoader.getConfig();
 
     @Test
     public void init_test() {
         commons.open_inventory();
+        commons.add_items_to_cart(3);
         String init_cart_num = commons.get_cart_num();
-        productDetailsPage.open_first_product_details(driver);
-        productDetailsPage.add_to_cart(driver);
-        productDetailsPage.remove_from_cart(driver);
+        commons.logout();
+
+        loginPage.login(driver);
         String final_cart_num = commons.get_cart_num();
-        assertEquals(init_cart_num, final_cart_num, "Shopping cart number should be equal to previous value: " + init_cart_num);
+
+        assertEquals(init_cart_num, final_cart_num, "Persistence Test Failed.");
     }
 
     @AfterAll
