@@ -17,27 +17,6 @@ public class Waits {
         return driver.findElement(locator);
     }
 
-    // Wait until the element is clickable, either by By locator or XPath as String
-    public static WebElement waitForElementToBeClickable(WebDriver driver, By locator, long timeoutInSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
-    }
-
-    public static WebElement waitForElementToBeClickable(WebDriver driver, String xpath, long timeoutInSeconds) {
-        By locator = By.xpath(xpath);
-        return waitForElementToBeClickable(driver, locator, timeoutInSeconds);
-    }
-
-    // Wait until the element is visible, either by By locator or XPath as String
-    public static WebElement waitForElementToBeVisible(WebDriver driver, By locator, long timeoutInSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-
-    public static WebElement waitForElementToBeVisible(WebDriver driver, String xpath, long timeoutInSeconds) {
-        By locator = By.xpath(xpath);
-        return waitForElementToBeVisible(driver, locator, timeoutInSeconds);
-    }
 
     // Wait for the page to load completely (checking document.readyState)
     public static void waitForPageToLoad(WebDriver driver) {
