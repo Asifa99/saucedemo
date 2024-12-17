@@ -6,5 +6,9 @@
   "password": "secret_sauce",
   "first_name": "Asifa",
   "last_name": "Iqbal",
-  "postal_code": "44000"
+  "postal_code": "44000",
+  "browsers": [
+    "chrome",
+    "firefox"
+  ]
 }
