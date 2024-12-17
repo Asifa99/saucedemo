@@ -8,11 +8,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utils.WebDriverLoader;
 
+import java.net.MalformedURLException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CartPageTest {
     private static Commons commons = new Commons();
-    private static WebDriver driver = WebDriverLoader.getDriver();
+    private static WebDriver driver;
+
+    static {
+        try {
+            driver = WebDriverLoader.getDriver();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     @Test

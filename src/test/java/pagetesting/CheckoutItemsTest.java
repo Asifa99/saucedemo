@@ -7,10 +7,20 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import utils.WebDriverLoader;
 
+import java.net.MalformedURLException;
+
 public class CheckoutItemsTest {
     private static CheckoutItems checkoutItemsPage = new CheckoutItems();
     private static Commons commons = new Commons();
-    private static WebDriver driver = WebDriverLoader.getDriver();
+    private static WebDriver driver;
+
+    static {
+        try {
+            driver = WebDriverLoader.getDriver();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     @Test

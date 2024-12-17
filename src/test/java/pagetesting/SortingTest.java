@@ -7,12 +7,22 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import utils.WebDriverLoader;
 
+import java.net.MalformedURLException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SortingTest {
     private static Commons commons = new Commons();
     private static Sorting sorting = new Sorting();
-    private static WebDriver driver = WebDriverLoader.getDriver();
+    private static WebDriver driver;
+
+    static {
+        try {
+            driver = WebDriverLoader.getDriver();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     @Test

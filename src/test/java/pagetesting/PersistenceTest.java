@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import utils.ConfigLoader;
 import utils.WebDriverLoader;
 
+import java.net.MalformedURLException;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,7 +18,16 @@ public class PersistenceTest {
     private static LoginPage loginPage = new LoginPage();
     private static PurchaseItemsPage purchaseItemsPage = new PurchaseItemsPage();
     private static Commons commons = new Commons();
-    private static WebDriver driver = WebDriverLoader.getDriver();
+    private static WebDriver driver;
+
+    static {
+        try {
+            driver = WebDriverLoader.getDriver();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     Map<String, Object> config = ConfigLoader.getConfig();
 
     @Test

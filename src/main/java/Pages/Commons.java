@@ -1,12 +1,13 @@
 package Pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import utils.ConfigLoader;
 import utils.Waits;
 import utils.WebDriverLoader;
 
+import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -17,7 +18,15 @@ public class Commons {
     private String logout_link_id = "logout_sidebar_link";
 
     Map<String, Object> config = ConfigLoader.getConfig();
-    private static WebDriver driver = WebDriverLoader.getDriver();
+    private static RemoteWebDriver driver;
+
+    static {
+        try {
+            driver = (RemoteWebDriver) WebDriverLoader.getDriver();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void open_inventory() {
         String currentUrl = driver.getCurrentUrl();

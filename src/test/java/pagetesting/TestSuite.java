@@ -5,8 +5,18 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import utils.WebDriverLoader;
 
+import java.net.MalformedURLException;
+
 public class TestSuite {
-    private static WebDriver driver = WebDriverLoader.getDriver();
+    private static WebDriver driver;
+
+    static {
+        try {
+            driver = WebDriverLoader.getDriver();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Test
     public void test_all() {

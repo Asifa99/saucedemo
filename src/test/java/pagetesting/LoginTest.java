@@ -7,11 +7,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.WebDriverLoader;
 
+import java.net.MalformedURLException;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginTest {
     private static LoginPage loginPage = new LoginPage();
-    private static WebDriver driver = WebDriverLoader.getDriver();
+    private static WebDriver driver;
+
+    static {
+        try {
+            driver = WebDriverLoader.getDriver();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     @Test

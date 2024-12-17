@@ -6,6 +6,7 @@ import utils.ConfigLoader;
 import utils.Waits;
 import utils.WebDriverLoader;
 
+import java.net.MalformedURLException;
 import java.util.Map;
 
 public class PurchaseItemsPage {
@@ -22,7 +23,15 @@ public class PurchaseItemsPage {
 
     private static Commons commons = new Commons();
 
-    private static WebDriver driver = WebDriverLoader.getDriver();
+    private static WebDriver driver;
+
+    static {
+        try {
+            driver = WebDriverLoader.getDriver();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void checkout() {
         commons.open_cart();
