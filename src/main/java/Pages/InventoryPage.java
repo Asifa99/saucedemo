@@ -1,13 +1,12 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import utils.ConfigLoader;
 import utils.Waits;
 import utils.WebDriverLoader;
 
-import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -16,17 +15,11 @@ public class InventoryPage {
     private String shopping_cart_class = "shopping_cart_badge";
     private String side_bar_icon_id = "react-burger-menu-btn";
     private String logout_link_id = "logout_sidebar_link";
+    private String inventory_btn_class = "btn_inventory";
 
     Map<String, Object> config = ConfigLoader.getConfig();
-    private static RemoteWebDriver driver;
+    private static WebDriver driver = WebDriverLoader.getDriver();
 
-    static {
-        try {
-            driver = (RemoteWebDriver) WebDriverLoader.getDriver();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public void open_inventory() {
         String currentUrl = driver.getCurrentUrl();
@@ -52,7 +45,10 @@ public class InventoryPage {
 
     public void add_items_to_cart(Integer items_num) {
         int counter = 0;
-        List<WebElement> buttons = driver.findElements(By.className("btn_inventory"));
+        Waits.waitForElementToClickable(driver, By.className(inventory_btn_class));
+        List<WebElement> buttons = driver.findElements(By.className(inventory_btn_class));
+
+
         for (WebElement button : buttons) {
             // Check if the button text is "Add to cart"
             if (button.getText().equals("Add to cart")) {
@@ -68,7 +64,9 @@ public class InventoryPage {
 
     public void remove_items_cart(Integer items_num) {
         int counter = 0;
-        List<WebElement> buttons = driver.findElements(By.className("btn_inventory"));
+        Waits.waitForElementToClickable(driver, By.className(inventory_btn_class));
+        List<WebElement> buttons = driver.findElements(By.className(inventory_btn_class));
+
         for (WebElement button : buttons) {
             // Check if the button text is "Remove"
             if (button.getText().equals("Remove")) {
@@ -76,7 +74,7 @@ public class InventoryPage {
                 button.click();
                 counter++;
             }
-            if (counter >= items_num) {
+            if (items_num > 0 && counter >= items_num) {
                 break;
             }
         }

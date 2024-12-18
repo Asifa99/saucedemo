@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.Select;
 import utils.ConfigLoader;
 import utils.WebDriverLoader;
 
-import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
 
@@ -20,15 +19,8 @@ public class Sorting {
 
 
     Map<String, Object> config = ConfigLoader.getConfig();
-    private static WebDriver driver;
+    private static WebDriver driver = WebDriverLoader.getDriver();
 
-    static {
-        try {
-            driver = WebDriverLoader.getDriver();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     // Constructor
     public Sorting() {

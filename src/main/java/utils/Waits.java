@@ -17,6 +17,10 @@ public class Waits {
         return driver.findElement(locator);
     }
 
+    public static void waitForElementToClickable(WebDriver driver, By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
 
     // Wait for the page to load completely (checking document.readyState)
     public static void waitForPageToLoad(WebDriver driver) {

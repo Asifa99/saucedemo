@@ -1,32 +1,24 @@
 package pagetesting;
 
 import Pages.InventoryPage;
+import Pages.LoginPage;
 import Pages.Sorting;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import utils.WebDriverLoader;
-
-import java.net.MalformedURLException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SortingTest {
     private static InventoryPage inventoryPage = new InventoryPage();
     private static Sorting sorting = new Sorting();
-    private static WebDriver driver;
-
-    static {
-        try {
-            driver = WebDriverLoader.getDriver();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    private static WebDriver driver = WebDriverLoader.getDriver();
+    private static LoginPage loginPage = new LoginPage();
 
 
     @Test
     public void init_test() {
+        loginPage.login(driver);
         inventoryPage.open_inventory();
 
         sorting.sort_by_a_to_z();
@@ -44,12 +36,5 @@ public class SortingTest {
         sorting.sort_by_high_to_low();
         Boolean high_to_low_sorting_result = Sorting.verify_high_to_low_sorting();
         assertEquals(true, high_to_low_sorting_result, "Price High to Low Sorting Failed.");
-    }
-
-    @AfterAll
-    public static void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
     }
 }

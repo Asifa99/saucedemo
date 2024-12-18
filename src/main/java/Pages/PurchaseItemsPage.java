@@ -6,7 +6,6 @@ import utils.ConfigLoader;
 import utils.Waits;
 import utils.WebDriverLoader;
 
-import java.net.MalformedURLException;
 import java.util.Map;
 
 public class PurchaseItemsPage {
@@ -23,15 +22,8 @@ public class PurchaseItemsPage {
 
     private static InventoryPage inventoryPage = new InventoryPage();
 
-    private static WebDriver driver;
+    private static WebDriver driver = WebDriverLoader.getDriver();
 
-    static {
-        try {
-            driver = WebDriverLoader.getDriver();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public void checkout() {
         inventoryPage.open_cart();
