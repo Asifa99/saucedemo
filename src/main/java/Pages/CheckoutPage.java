@@ -8,13 +8,13 @@ import utils.ConfigLoader;
 import java.util.List;
 import java.util.Map;
 
-public class CheckoutItems {
+public class CheckoutPage {
     private String remove_btn_class = "cart_button";
 
     Map<String, Object> config = ConfigLoader.getConfig();
 
     // Constructor
-    public CheckoutItems() {
+    public CheckoutPage() {
     }
 
     public void remove_items_from_cart(WebDriver driver) {

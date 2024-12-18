@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class Commons {
+public class InventoryPage {
     private String shopping_cart_class = "shopping_cart_badge";
     private String side_bar_icon_id = "react-burger-menu-btn";
     private String logout_link_id = "logout_sidebar_link";

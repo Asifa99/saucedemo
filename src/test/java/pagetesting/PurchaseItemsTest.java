@@ -1,6 +1,6 @@
 package pagetesting;
 
-import Pages.Commons;
+import Pages.InventoryPage;
 import Pages.PurchaseItemsPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PurchaseItemsTest {
     private static PurchaseItemsPage purchaseItemsPage = new PurchaseItemsPage();
-    private static Commons commons = new Commons();
+    private static InventoryPage inventoryPage = new InventoryPage();
     private static WebDriver driver;
 
     static {
@@ -30,8 +30,8 @@ public class PurchaseItemsTest {
 
     @Test
     public void init_test() {
-        commons.open_inventory();
-        commons.add_items_to_cart(3);
+        inventoryPage.open_inventory();
+        inventoryPage.add_items_to_cart(3);
         purchaseItemsPage.checkout();
         purchaseItemsPage.checkout_confirm();
         purchaseItemsPage.complete_purchase();

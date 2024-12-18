@@ -1,7 +1,7 @@
 package pagetesting;
 
-import Pages.CheckoutItems;
-import Pages.Commons;
+import Pages.CheckoutPage;
+import Pages.InventoryPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -9,9 +9,9 @@ import utils.WebDriverLoader;
 
 import java.net.MalformedURLException;
 
-public class CheckoutItemsTest {
-    private static CheckoutItems checkoutItemsPage = new CheckoutItems();
-    private static Commons commons = new Commons();
+public class CheckoutPageTest {
+    private static CheckoutPage checkoutItemsPage = new CheckoutPage();
+    private static InventoryPage inventoryPage = new InventoryPage();
     private static WebDriver driver;
 
     static {
@@ -25,7 +25,7 @@ public class CheckoutItemsTest {
 
     @Test
     public void init_test() {
-        commons.open_cart();
+        inventoryPage.open_cart();
         checkoutItemsPage.remove_items_from_cart(driver);
     }
 

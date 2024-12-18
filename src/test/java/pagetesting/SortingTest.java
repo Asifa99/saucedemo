@@ -1,6 +1,6 @@
 package pagetesting;
 
-import Pages.Commons;
+import Pages.InventoryPage;
 import Pages.Sorting;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,7 @@ import java.net.MalformedURLException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SortingTest {
-    private static Commons commons = new Commons();
+    private static InventoryPage inventoryPage = new InventoryPage();
     private static Sorting sorting = new Sorting();
     private static WebDriver driver;
 
@@ -27,7 +27,7 @@ public class SortingTest {
 
     @Test
     public void init_test() {
-        commons.open_inventory();
+        inventoryPage.open_inventory();
 
         sorting.sort_by_a_to_z();
         Boolean a_to_z_sorting_result = Sorting.verify_a_to_z_sorting();

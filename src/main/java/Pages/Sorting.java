@@ -36,17 +36,25 @@ public class Sorting {
 
     public void sort_by_a_to_z() {
         WebElement sortDropdown = driver.findElement(By.className(sort_dropdown_class));
+        //Select class is specifically designed for handling dropdown elements
         Select sortSelect = new Select(sortDropdown);
         sortSelect.selectByValue(sort_by_a_to_z_value);
     }
 
     public static Boolean verify_a_to_z_sorting() {
+        //Returns a list of all products
         List<WebElement> inventory_item_names = driver.findElements(By.className("inventory_item_name"));
+        //initialize variable
         int ascii_value_temp = -1;
+        //iterates through each product item
         for (WebElement item : inventory_item_names) {
+            //fetch text of each product
             String name = item.getText();
+            //Gets the first character of the name
             char first_char = name.charAt(0);
+            //Converts the character to its ASCII value.
             int asciiValue = (int) first_char;
+            //Checks if the current item's first character ASCII value is less than the previous one
             if (asciiValue < ascii_value_temp) {
                 return false;
             }
@@ -64,6 +72,7 @@ public class Sorting {
 
     public static Boolean verify_z_to_a_sorting() {
         List<WebElement> inventory_item_names = driver.findElements(By.className("inventory_item_name"));
+        //Initializes a temporary variable  with a high value 200
         int ascii_value_temp = 200;
         for (WebElement item : inventory_item_names) {
             String name = item.getText();
@@ -77,7 +86,7 @@ public class Sorting {
         return true;
     }
 
-
+    //low to high price filter
     public void sort_by_low_to_high() {
         WebElement sortDropdown = driver.findElement(By.className(sort_dropdown_class));
         Select sortSelect = new Select(sortDropdown);
@@ -90,6 +99,7 @@ public class Sorting {
 
         for (WebElement item : inventory_item_names) {
             String price_str = item.getText().replace("$", "");
+            //convert string into float
             float price = Float.parseFloat(price_str);
             if (price_temp == 0) {
                 price_temp = price;

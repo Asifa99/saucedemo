@@ -1,6 +1,6 @@
 package pagetesting;
 
-import Pages.Commons;
+import Pages.InventoryPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -13,7 +13,7 @@ import java.net.MalformedURLException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CartPageTest {
-    private static Commons commons = new Commons();
+    private static InventoryPage inventoryPage = new InventoryPage();
     private static WebDriver driver;
 
     static {
@@ -27,8 +27,8 @@ public class CartPageTest {
 
     @Test
     public void init_test() {
-        commons.add_items_to_cart(3);
-        commons.remove_items_cart(2);
+        inventoryPage.add_items_to_cart(3);
+        inventoryPage.remove_items_cart(2);
 
         WebElement cart_items_num = driver.findElement(By.className("shopping_cart_badge"));
         assertEquals("1", cart_items_num.getText(), "Cart icon should be equal to 1 after adding 3 and removing 2 items.");

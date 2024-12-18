@@ -2,7 +2,6 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import utils.WebDriverLoader;
 import utils.ConfigLoader;
 
 import java.util.Map;
@@ -19,6 +18,7 @@ public class LoginPage {
 
 
     public void login(WebDriver driver) {
+        //have to add waits here
         driver.get((String) config.get("login_url"));
         driver.findElement(By.id(username_id)).sendKeys((String) config.get("username"));
         driver.findElement(By.id(password_id)).sendKeys((String) config.get("password"));

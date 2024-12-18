@@ -21,7 +21,7 @@ public class PurchaseItemsPage {
 
     Map<String, Object> config = ConfigLoader.getConfig();
 
-    private static Commons commons = new Commons();
+    private static InventoryPage inventoryPage = new InventoryPage();
 
     private static WebDriver driver;
 
@@ -34,7 +34,7 @@ public class PurchaseItemsPage {
     }
 
     public void checkout() {
-        commons.open_cart();
+        inventoryPage.open_cart();
         Waits.getElementWhenVisible(driver, By.id(checkout_btn_id)).click();
     }
 
