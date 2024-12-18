@@ -1,18 +1,19 @@
 package pagetesting;
 
-import Pages.LoginPage;
+import Pages.Commons;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import utils.WebDriverLoader;
 
 import java.net.MalformedURLException;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class LoginTest {
-    private static LoginPage loginPage = new LoginPage();
+public class CartPageTest {
+    private static Commons commons = new Commons();
     private static WebDriver driver;
 
     static {
@@ -26,9 +27,12 @@ public class LoginTest {
 
     @Test
     public void init_test() {
-        loginPage.login(driver);
-        assertTrue(driver.findElement(By.className("inventory_list")).isDisplayed(),
-                "Login failed, inventory page not displayed.");
+        commons.add_items_to_cart(3);
+        commons.remove_items_cart(2);
+
+        WebElement cart_items_num = driver.findElement(By.className("shopping_cart_badge"));
+        assertEquals("1", cart_items_num.getText(), "Cart icon should be equal to 1 after adding 3 and removing 2 items.");
+
     }
 
     @AfterAll

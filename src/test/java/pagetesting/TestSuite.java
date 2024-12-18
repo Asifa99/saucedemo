@@ -1,18 +1,13 @@
 package pagetesting;
 
-import Pages.LoginPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.WebDriverLoader;
 
 import java.net.MalformedURLException;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-public class LoginTest {
-    private static LoginPage loginPage = new LoginPage();
+public class TestSuite {
     private static WebDriver driver;
 
     static {
@@ -23,12 +18,15 @@ public class LoginTest {
         }
     }
 
-
     @Test
-    public void init_test() {
-        loginPage.login(driver);
-        assertTrue(driver.findElement(By.className("inventory_list")).isDisplayed(),
-                "Login failed, inventory page not displayed.");
+    public void test_all() {
+        new LoginTest().init_test();
+        new CartPageTest().init_test();
+        new CheckoutItemsTest().init_test();
+        new ProductDetailsPageTest().init_test();
+        new PurchaseItemsTest().init_test();
+        new PersistenceTest().init_test();
+        new SortingTest().init_test();
     }
 
     @AfterAll
