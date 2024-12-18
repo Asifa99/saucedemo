@@ -58,7 +58,7 @@ public class Sorting {
 
         if (Objects.equals(sort_by, "a_to_z")) {
             //initialize variable
-            int ascii_value_temp = -1;
+            int ascii_value_temp = 0;
             //iterates through each product item
             for (WebElement item : inventory_item_names) {
                 //fetch text of each product
